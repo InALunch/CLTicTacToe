@@ -1,5 +1,6 @@
 import random
 import time
+import sys
 
 class TicTacToe:
     def __init__(self, ai = (False, True)):
@@ -175,7 +176,45 @@ class TicTacToe:
         for row in self.board:
             print('|'.join(row))
 
-# default is Player 1:Human, Player 2:AI. If you prefer Human v. human, change below line to 
-# game = TicTacToe((False, False)) to represent no AIs. 
-game = TicTacToe((False, True)) 
-game.play()
+# End of TicTacToe class.
+
+def launch_game(num):
+    num = int(num) % 4
+    mapping = {0: (True, True), 1: (False, True), 2: (True, False), 3: (False, False)}
+    game = TicTacToe(mapping[num])
+    game.play()
+
+def keep_playing(playing):
+    if len(playing) == 0:
+        return False 
+    if playing[0].lower() in ['f','n', 'e','q']:
+        return False
+    return True
+def system_communication():
+    if sys.argv[1] in ['1','2','3','4']:
+        launch_game(int(sys.argv[1]))
+    else:
+        print ("There are 4 modes of the Tic Tac Toe game:")
+        print ("1: Go first against the AI")
+        print ("2: Play second against the AI")
+        print ("3: Play against a friend")
+        print ("4: pit two AIs against each other!")
+        mode = 'ok'
+        while mode != '':
+            mode = input("Which game mode are you most interested in?")
+            try:
+                m = int(mode)
+                launch_game(m)
+                playing = input("Do you want to keep playing?")
+            except:
+                playing = input("I didn't catch that. Do you want to keep playing?")
+            if not keep_playing(playing):
+                break
+                
+        print("Have a nice day!")
+
+if len(sys.argv) == 1:
+    game = TicTacToe((False, True)) 
+    game.play()
+else:
+    system_communication()
