@@ -194,13 +194,13 @@ def system_communication():
     if sys.argv[1] in ['1','2','3','4']:
         launch_game(int(sys.argv[1]))
     else:
-        print ("There are 4 modes of the Tic Tac Toe game:")
-        print ("1: Go first against the AI")
-        print ("2: Play second against the AI")
-        print ("3: Play against a friend")
-        print ("4: pit two AIs against each other!")
         mode = 'ok'
         while mode != '':
+            print ("There are 4 modes of the Tic Tac Toe game:")
+            print ("1: Go first against the AI")
+            print ("2: Play second against the AI")
+            print ("3: Play against a friend")
+            print ("4: pit two AIs against each other!")
             mode = input("Which game mode are you most interested in?")
             try:
                 m = int(mode)
