@@ -9,11 +9,11 @@ class TicTacToe:
         if ai[0]:
             self.player1name = 'Cortana'
         else:
-            self.player1name = input("What is your name, player 1?")
+            self.player1name = input("What is your name, player 1? ")
         if ai[1]:
             self.player2name = "GLADOS"
         else:
-            self.player2name = input("What is your name, player 2?")
+            self.player2name = input("What is your name, player 2? ")
         
         self.winstate = False
         self.moves = 0
@@ -109,7 +109,7 @@ class TicTacToe:
             playername = self.player1name
         else:
             playername = self.player2name 
-        move = input("What is your move, " + playername + '?')
+        move = input("What is your move, " + playername + '? ')
         try:
             move = self.check_if_valid(move)
         except Exception as e:
@@ -201,13 +201,13 @@ def system_communication():
             print ("2: Play second against the AI")
             print ("3: Play against a friend")
             print ("4: pit two AIs against each other!")
-            mode = input("Which game mode are you most interested in?")
+            mode = input("Which game mode are you most interested in? ")
             try:
                 m = int(mode)
                 launch_game(m)
-                playing = input("Do you want to keep playing?")
+                playing = input("Do you want to keep playing? ")
             except:
-                playing = input("I didn't catch that. Do you want to keep playing?")
+                playing = input("I didn't catch that. Do you want to keep playing? ")
             if not keep_playing(playing):
                 break
                 
